@@ -28,7 +28,7 @@ It produces:
 
 Runs quality tests using
 * the [black formatter][black]
-* [flake8][] (configuration in [tox.ini][])
+* [flake8][] (configuration in [tox.ini](tox.ini))
     
 Black: 
 ```bash 
@@ -36,7 +36,7 @@ pip install black
 black . 
 ```
 
-Flake8 (options in [tox.ini][]) 
+Flake8 (options in [tox.ini](tox.ini) ) 
 ```bash 
 pip install flake8
 flake8 my_package/ tests/
@@ -51,12 +51,12 @@ Includes:
 #### Documentation
 
 The documentation generation uses [sphinx][] to create html files from the files 
-in [docs/][]. 
+in [docs/](docs/). 
  
-* [docs/conf.py][] (required) is the sphinx configuration file. Edit it to change defaults or add plug-ins
-* [docs/index.rst][] (required) is the documentation index file. 
-* [docs/readme.rst][] demonstrates how to import a readme file in RestructuredText
-* [docs/API_reference.rst] demonstrates how to display an API refenrence automatically generated from docstrings
+* [docs/conf.py](docs/conf.py) (required) is the sphinx configuration file. Edit it to change defaults or add plug-ins
+* [docs/index.rst](docs/index.rst) (required) is the documentation index file. 
+* [docs/readme.rst](docs/readme.rst) demonstrates how to import a readme file in RestructuredText
+* [docs/API_reference.rst](docs/API_reference.rst) demonstrates how to display an API refenrence automatically generated from docstrings
 
 ### Deploy
 
@@ -66,9 +66,8 @@ On `master` branches, uses Gitlab Pages to deploy the generated documentation.
 ## Packaging
 
 
-1. Rename [my_package/][] and fill it with your source code
-2. Edit parameters in [setup.cfg][]. Version can be in [setup.cfg][] or a
-module variable in [src/\_\_init__.py][]`
+1. Rename `my_package/` and fill it with your source code
+2. Edit parameters in [setup.cfg](setup.cfg). 
 3. Install your new package: 
 
 ```bash
@@ -87,8 +86,8 @@ $ python setup.py develop
 $ pip install -e .
 ```
 
-Edit the version number of your package in [my_package/__init__.py][]
-and in addition to being accessible by [setup.py][], it is accessible as `my_package.__version__`  
+Edit the version number of your package in `my_package/__init__.py`
+and in addition to being accessible by [setup.py](setup.py), it is accessible as `my_package.__version__`  
 when `my_package` is installed. 
 
 The tests configured in the CI will check if the package installation raises any errors. 
@@ -103,13 +102,12 @@ pip install pre-commit
 pre-commit install
 ```
 
-The following hooks are configured in [.pre-commit-config.yaml][]:
+The following hooks are configured in [.pre-commit-config.yaml](.pre-commit-config.yaml):
 * the [black][] formatter refuse the commit if `black` needs to make any formatting changes
 * [flake8][] will refuse the commit if it fails the `flake8` checks (parameters are set in `setup.cfg`)
 
 [flake8]: http://flake8.pycqa.org/en/latest/
 [black]: https://github.com/ambv/black 
 [pre-commit]: https://pre-commit.com/
-[setup.cfg]: setup.cfg
-[src/__init__.py]: my_package/__init__.py
+[sphinx]: http://www.sphinx-doc.org/en/master/
  
