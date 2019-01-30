@@ -1,24 +1,56 @@
 image: python:3.7
 
 stages:
-  - build
   - test
+  - quality
+  - misc
+  - deploy
 
-build:
-  stage: build
-  script:
-    - make install
+before_script:
+  - pip install tox
 
-test:
+tests:
   stage: test
-  script:
-    - make devdep coverage
+  script: tox -e py37
   artifacts:
     paths:
-      - $CI_PROJECT_DIR/htmlcov
+      - htmlcov
+  coverage: '/^TOTAL(?:\s+\d+){4}\s+(\d+\%)$/'
 
-quality:
-  stage: test
+lint:
+  stage: quality
+  script: tox -e lint
+
+formatting:
+  stage: quality
+  script: tox -e formatting
+
+py36:
+  stage: misc
+  image: python:3.6
+  script: tox -e 36
+  when: manual
+
+docs:
+  stage: misc
+  dependencies:
+    - tests
   script:
-      - make devdep quality
-  allow_failure: true
+    - mkdir -p doc/_static/coverage
+    - cp -r htmlcov/* doc/_static/coverage/
+    - tox -e doc
+  artifacts:
+    paths:
+      - doc/_build
+
+pages:
+  stage: deploy
+  dependencies:
+    - docs
+  script:
+    - mv doc/_build public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master

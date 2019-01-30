@@ -47,5 +47,5 @@ Running `make devdep` will install [pre-commit][] and the following hooks config
 [black]: https://github.com/ambv/black 
 [pre-commit]: https://pre-commit.com/
 [setup.cfg]: setup.cfg
-[src/__init__.py]: src/__init__.py
+[src/__init__.py]: my_package/__init__.py
  
