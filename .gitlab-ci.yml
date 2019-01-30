@@ -14,7 +14,7 @@ tests:
   script: tox -e py37
   artifacts:
     paths:
-      - htmlcov
+      - coverage
   coverage: '/^TOTAL(?:\s+\d+){4}\s+(\d+\%)$/'
 
 lint:
@@ -36,19 +36,19 @@ docs:
   dependencies:
     - tests
   script:
-    - mkdir -p doc/_static/coverage
-    - cp -r htmlcov/* doc/_static/coverage/
-    - tox -e doc
+    - mkdir -p docs/_static/coverage
+    - cp -r htmlcov/* docs/_static/coverage/
+    - tox -e docs
   artifacts:
     paths:
-      - doc/_build
+      - docs/_build
 
 pages:
   stage: deploy
   dependencies:
     - docs
   script:
-    - mv doc/_build public
+    - mv docs/_build public
   artifacts:
     paths:
       - public

@@ -1,6 +1,7 @@
 
 Documentation placeholder index
 ****************************************
+`Coverage Report <_static/coverage/index.html>`_
 
 .. toctree::
    :maxdepth: 2
