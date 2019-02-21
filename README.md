@@ -2,7 +2,7 @@
 
 You never have to worry about CI, packaging or code quality again. By using this template, you will get
 * a pre-filled CI with build, test and quality jobs
-* packaging for free: just put your package code in `src/` and fill in `requirements.txt`, the template will do the rest
+* packaging for free: just put your package code in `my_package/` and fill in `requirements.txt`, the template will do the rest
 * commit hooks that will keep you from ever committing silly stuff again
 
 ## CI
